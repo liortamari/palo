@@ -64,6 +64,7 @@ def api_similar():
     key = ''.join(sorted(word))
     similar_words = words.get(key, set())
     if word in similar_words:
+        similar_words = set(similar_words)
         similar_words.remove(word)
     response = {
         "similar": list(similar_words)
