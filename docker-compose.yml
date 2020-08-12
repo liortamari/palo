@@ -2,29 +2,7 @@ version: '3.8'
 
 services:
 
-  redis:
-    image: redis
-
-  rebrow:
-    image: marian/rebrow
-    ports:
-      - 8001:5001
-    depends_on:
-      - redis
-
-  words-init:
-    build: ./words/
-    depends_on:
-      - redis
-
   webapp:
     build: ./webapp/
-    depends_on:
-      - redis
-
-  load-balancer:
-    build: ./nginx/
     ports:
-      - "8000:80"
-    depends_on:
-      - webapp
+      - "8000:8080"
